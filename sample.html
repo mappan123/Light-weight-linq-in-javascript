@@ -1,0 +1,115 @@
+<html>
+<head>
+  <script src="LightWeightLinq.js"></script>
+  <script type="text/javascript">
+    var cars = [
+        {'name': 'Camry', 'mpg': 20, 'color': 'red'  },
+        {'name': 'Accord', 'mpg': 30, 'color': 'blue'  },
+        {'name': 'Q7', 'mpg': 16, 'color': 'red'  },
+        {'name': 'Passat', 'mpg': 15, 'color': 'black'  },
+        {'name': 'CRV', 'mpg': 17, 'color': 'red'  },
+        {'name': 'Mini', 'mpg': 24, 'color': 'red'  },
+        {'name': 'Mustang', 'mpg': 16, 'color': 'white'  },
+        {'name': 'Camaro', 'mpg': 15, 'color': 'red'  },
+        {'name': 'Avalon', 'mpg': 24, 'color': 'red'  }
+      ];
+
+
+//Cars with milage >= 20
+function filter()
+{
+    var result = ToEnumerable(cars).Where(function(x){
+    return x.mpg >= 20;}).ToList();
+  
+  document.getElementById("result").innerText=JSON.stringify(result);
+}
+/*Output
+[{"name":"Camry","mpg":20,"color":"red"},{"name":"Accord","mpg":30,"color":"blue"},{"name":"Mini","mpg":24,"color":"red"},{"name":"Avalon","mpg":24,"color":"red"}]
+*/
+
+//Transforms to another object
+function transform()
+{
+  var context = ToEnumerable(cars).Select(function(x){
+  return {car: x, status: 'In stock'};
+  }).ToList();
+  
+  document.getElementById("result").innerText=JSON.stringify(context);
+}
+
+//Chaining ability. Chains the result.
+function chain()
+{
+  var chain = ToEnumerable(cars).Where(function(x){
+    return x.mpg >= 20;}).Select(function(x){ 
+      return {car: x, status: 'In stock'};
+  }).ToList();
+  
+  document.getElementById("result").innerText=JSON.stringify(chain);
+}
+
+//Check if atleast object exists in an array with the condition satistied
+//With out any parameter returns true is any item is present in the array
+function exists()
+{
+  var result = ToEnumerable(cars).Any(function(x){
+    return x.color == 'red';
+  });
+  
+  document.getElementById("result").innerText=result;
+}
+
+//Check if all objects satisfy a condition in an array
+function allExists()
+{
+  var result = ToEnumerable(cars).All(function(x){
+    return x.color == 'red';
+  });
+  
+  document.getElementById("result").innerText=JSON.stringify(result);
+}
+
+//Returns the first object that satisfies the condition on the object
+//Without the parameter it returns the first object
+function first()
+{
+  var result = ToEnumerable(cars).First(function(x){
+    return x.color == 'blue';
+  });
+  
+  document.getElementById("result").innerText=JSON.stringify(result);
+}
+
+//For loops sample. calls the calculate method for every object
+function loop()
+{
+  var results = []; 
+  ToEnumerable(cars).ForEach(function(x){
+    results.push(calculate(x));       
+  });
+  
+  document.getElementById("result").innerText=JSON.stringify(results);
+}
+
+function calculate(car){
+  if(car.mpg > 20){
+    return true;
+  }
+  
+  return false;
+}
+
+
+</script>
+</head>
+<body>
+  <input type='button' value='Filter cars with milage >=20' onclick='javascript:filter();'>
+  <input type='button' value='Transform to another object' onclick='javascript:transform();'>
+  <input type='button' value='Filter and then select(chaining)' onclick='javascript:chain();'>
+  <input type='button' value='Check if red color car exists' onclick='javascript:exists();'>
+  <input type='button' value='Check if all cars are red color' onclick='javascript: allExists();'>
+  <input type='button' value='return the first car with blue color' onclick='javascript: first();'>
+  <input type='button' value='For loop sample' onclick='javascript: loop();'>
+  <div id="result"></div>
+</body>
+</html>
