@@ -3,12 +3,16 @@ Light weight linq in javascript
 
 #Features
 Lightweight/thin and simple to use. 
+
 Provides few frequently used functionalities in any program
+
 Enables quries on objects for javascript arrays. 
+
 For loops can be avoided using this library for filtering, transforming, check exists etc.
+
 It has no dependency with any other javascript library. It is independent and can be included in any of your javascript programs
 
-Usage
+#Usage
 
  var cars = [
         {'name': 'Camry', 'mpg': 20, 'color': 'red'  },
