@@ -43,16 +43,15 @@ function Enumerable(data) {
         return new Enumerable(result);
     }
 
-    //Returns true if there is atleast one item in the collection
-    this.Any = function() {
-        return this.enumerable.length > 0;
-    }
-
-    //Returns true if atleast one of the item satiesfies the predicate
+   //Returns true if atleast one of the item satiesfies the predicate
     this.Any = function(predicate) {
-        
+
         if (!validate(this.enumerable))
             return null;
+
+        if (arguments.length == 0) {
+            return this.enumerable.length > 0;
+        }
 
         var result = [];
 
@@ -64,7 +63,6 @@ function Enumerable(data) {
 
         return false;
     }
-
     //Returns true if atleast all the items satiesfies the predicate
     this.All = function(predicate) {
 
@@ -88,18 +86,14 @@ function Enumerable(data) {
         }
     }
 
-    //Returns the first element in the enumerable items
-    this.First = function() {
-        if (!validate(this.enumerable))
-            return null;
-
-        return this.enumerable[0];
-    }
-
     //Returns the first element that satisfies the predicate
     this.First = function (predicate) {
         if (!validate(this.enumerable))
             return null;
+
+        if (arguments.length == 0) {
+            return this.enumerable[0];
+        }
 
         for (var i = 0; i < this.enumerable.length; i++) {
             if (predicate(this.enumerable[i])) {
