@@ -1,4 +1,4 @@
-# Linq-for-javascript
+# Linq for javascript
 Linq for javascript
 
 Plunker link: http://plnkr.co/edit/oBZnD5ZBJinyYGgiwghV?p=preview
