@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------------------------------
-Light weight Linq for javascript
+Linq for javascript
 Enables quries on objects for javascript arrays. 
 For loops can be avoided using this library for filtering, transforming, check exists etc.
 It has no dependency with any other javascript library. 
