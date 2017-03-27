@@ -1,16 +1,18 @@
-# Light-weight-linq-in-javascript
-Light weight linq in javascript
+# Linq-for-javascript
+Linq for javascript
 
 Plunker link: http://plnkr.co/edit/oBZnD5ZBJinyYGgiwghV?p=preview
 
 #Features
-Lightweight/thin and simple to use. 
+Lightweight and simple to use. 
 
-Provides few frequently used functionalities in any program
+Provides frequently used functionalities in any program
 
 Enables quries on objects for javascript arrays. 
 
 For loops can be avoided using this library for filtering, transforming, check exists etc.
+
+Blazingly fast.
 
 It has no dependency with any other javascript library. It is independent and can be included in any of your javascript programs
 
